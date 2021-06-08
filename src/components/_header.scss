@@ -1,0 +1,89 @@
+@import "../style/variables";
+
+.header {
+  padding: 0.5em 1.5em;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+
+  h1 {
+    span:nth-child(2) {
+      color: $accent-red-text;
+      color: $logo-red;
+      font-weight: 600;
+    }
+  }
+
+  &__logo {
+    flex: 0.05;
+    color: $dark-text;
+    display: flex;
+    img {
+      width: 25px;
+      height: 15px;
+    }
+  }
+  &__search {
+    flex: 0.6;
+    display: flex;
+
+    &__in {
+      border-radius: 5px;
+      border: 0.5px solid #4b4b4b8e;
+      padding: 0.25em;
+      background-color: #15122b;
+      display: flex;
+      transition: all ease-in-out 0.35s;
+      width: 50%;
+      &__icon {
+        display: flex;
+        align-items: center;
+      }
+    }
+    input {
+      margin-left: 0.25em;
+      padding: 0.25em;
+      background-color: transparent;
+      width: 100%;
+      outline: none;
+
+      color: $dark-text;
+    }
+  }
+  &__user {
+    width: 15vw;
+    display: flex;
+    align-items: center;
+    // justify-content: space-between;
+
+    &__notify {
+      flex: 0.25;
+      display: flex;
+      align-items: center;
+    }
+
+    &__avatar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      h3 {
+        margin-left: 0.5em;
+        font-weight: 400;
+        font-size: 0.95rem;
+        letter-spacing: 0.5px;
+      }
+    }
+
+    img {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+    }
+  }
+}
+.expand {
+  width: 100%;
+  border: 0;
+  background-color: #0d0b20;
+}
