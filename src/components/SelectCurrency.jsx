@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 
-import unirest from "unirest";
 const api_key = "5ea4dfc6-17d5-482c-8345-57b80ed444d5";
 const SelectCurrency = () => {
   const [currencies, setCurrencies] = useState([]);
@@ -11,38 +10,37 @@ const SelectCurrency = () => {
     if (!currency) {
       setCurrency(localStorage.getItem("currency"));
     }
-    // unirest
-    //   .post("https://pro-api.coinmarketcap.com/v1/fiat/map")
-    //   .header("X-CMC_PRO_API_KEY", api_key)
-    //   .header("Access-Control-Allow-Origin", "*")
-    //   .end(function (result) {
-    //     console.log(result.status, result.body);
-    //   });
-    // const res = await axios.get(
-    //   "https://pro-api.coinmarketcap.com/v1/fiat/map",
-    //   {
-    //     headers: {
-    //       "X-CMC_PRO_API_KEY": "5ea4dfc6-17d5-482c-8345-57b80ed444d5",
-    //       "Access-Control-Allow-Origin": "*",
-    //       crossorigin: "true",
-    //     },
-    //   }
-    // );
 
-    const res = await fetch(
-      "https://api.coingecko.com/api/v3/simple/supported_vs_currencies"
+    const res = await axios.get(
+      "https://pro-api.coinmarketcap.com/v1/fiat/map",
+      {
+        headers: {
+          "X-CMC_PRO_API_KEY": "5ea4dfc6-17d5-482c-8345-57b80ed444d5",
+          "Access-Control-Allow-Origin": "*",
+          crossorigin: "true",
+        },
+      }
     );
-    const data = await res.json();
-    setCurrencies(data);
+    const result = res.data;
+
+    setCurrencies(result.data);
+    // console.log(res.data.data);
+
+    // const res = await fetch(
+    //   "https://api.coingecko.com/api/v3/simple/supported_vs_currencies"
+    // );
+    // const data = await res.json();
+    // setCurrencies(data);
   };
   useEffect(() => {
     fetchCurrencies();
   }, []);
 
-  const handleClick = (event) => {
+  const handleClick = (symbol) => {
     setShowDropDown(!showDropdown);
-    localStorage.setItem("currency", event.target.textContent);
-    setCurrency(event.target.textContent);
+
+    localStorage.setItem("currency", symbol);
+    setCurrency(symbol);
   };
   return (
     <div className="selectcurrency">
@@ -67,10 +65,13 @@ const SelectCurrency = () => {
           </div>
           {/* TODO add currency flags */}
           <div className="selectcurrency__currency__dropdown__list">
-            {currencies?.map((curr) => {
+            {currencies?.map((curr, idx) => {
               return (
-                <li onClick={handleClick} key={curr}>
-                  {curr}
+                <li onClick={() => handleClick(curr.symbol)} key={idx}>
+                  {curr.name}
+                  <p>
+                    {curr.sign} <span>{curr.symbol}</span>
+                  </p>
                 </li>
               );
             })}

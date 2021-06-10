@@ -206,7 +206,7 @@
   overflow-y: scroll;
   margin-top: 1.5em;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 1em;
 }
 
@@ -225,9 +225,12 @@
   transition: all ease-in-out 0.3s;
 }
 
+.selectcurrency__currency__dropdown li p {
+  color: #6c6c7c;
+}
+
 .selectcurrency__currency__dropdown li:hover {
   transform: scale(1.05);
-  background-color: #f52f57bd;
 }
 
 .selectcurrency select {
