@@ -1,0 +1,113 @@
+.selectcurrency {
+  width: 20%;
+  display: flex;
+  justify-content: flex-end;
+  &__selector {
+    margin-right: 1em;
+    padding: 0.5em;
+  }
+  h2 {
+    align-self: flex-start;
+    font-size: 1.5rem;
+    font-weight: 800;
+  }
+
+  &__currency {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    background-color: $dark-card;
+    text-align: center;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 800;
+    width: 40%;
+    transition: $anim;
+
+    &:hover {
+      transform: scale(0.95);
+    }
+
+    &__top {
+      padding: 0 0.5em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    &__dropdown {
+      display: flex;
+      flex-direction: column;
+      border-radius: 5px;
+      padding: 1em;
+      background-color: $dark-card;
+      margin-top: 0.5em;
+      width: 50%;
+      height: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      right: 0;
+
+      &__close {
+        border-radius: 50%;
+
+        display: flex;
+        align-items: center;
+        transition: $anim;
+
+        &:hover {
+          cursor: pointer;
+          background-color: $dark-bg;
+          transform: scale(0.9);
+        }
+      }
+      &__list {
+        padding: 0.5em;
+        overflow-y: scroll;
+        margin-top: 1.5em;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 1em;
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+      li {
+        border-radius: 5px;
+        text-transform: uppercase;
+        padding: 0.5em;
+        cursor: pointer;
+        list-style: none;
+        font-weight: 600;
+        background-color: $dark-bg;
+        transition: $anim;
+
+        &:hover {
+          transform: scale(1.05);
+
+          background-color: #f52f57bd;
+        }
+      }
+    }
+  }
+
+  select {
+    -webkit-appearance: none;
+    width: 50%;
+    border-radius: 5px;
+    background: white;
+    cursor: pointer;
+    transition: all 150ms ease;
+    option {
+      padding: 0.25em;
+      color: red;
+    }
+  }
+  select::-webkit-scrollbar {
+    display: none;
+  }
+}
