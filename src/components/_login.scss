@@ -14,10 +14,11 @@
     transition: $anim;
     height: 100%;
     font-family: $font-family;
-    font-size: 1rem;
+    font-size: 0.85rem;
     color: $logo-red;
     background-color: transparent;
     border: 2px solid $logo-red;
+    padding: 0 0.15em;
 
     &:hover {
       cursor: pointer;

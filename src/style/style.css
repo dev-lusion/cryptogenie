@@ -121,10 +121,11 @@
   transition: all ease-in-out 0.3s;
   height: 100%;
   font-family: "Inter", sans-serif;
-  font-size: 1rem;
+  font-size: 0.85rem;
   color: #f52f57;
   background-color: transparent;
   border: 2px solid #f52f57;
+  padding: 0 0.15em;
 }
 
 .login button:hover {
