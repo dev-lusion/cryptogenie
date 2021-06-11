@@ -12,7 +12,7 @@ const Header = ({ login }) => {
           <h1>
             <span>crypto</span>.<span>genie</span>
           </h1>
-          {/* <img src={logo} alt="logo" /> */}
+          <img src={logo} alt="logo" />
         </div>
         <div className="header__main__search">
           <div className={`header__main__search__in ${expand ? "expand" : ""}`}>

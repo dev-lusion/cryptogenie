@@ -199,7 +199,7 @@
   padding: 1em;
   background-color: #161b22;
   margin-top: 0.5em;
-  width: 60%;
+  width: 80%;
   height: 60%;
   position: absolute;
   top: 50%;
@@ -258,8 +258,9 @@
 
 @media screen and (max-width: 750px) {
   .selectcurrency__currency__dropdown {
-    width: 80%;
-    height: 70%;
+    width: 90%;
+    height: 80%;
+    margin-top: 1.5em;
   }
   .selectcurrency__currency__dropdown li {
     flex-direction: column;
