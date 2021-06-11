@@ -18,7 +18,8 @@
 }
 
 .header__main__logo {
-  flex: 0.05;
+  margin-right: 3em;
+  flex: 0.1;
   color: #dbdbdb;
   display: flex;
 }
@@ -29,7 +30,7 @@
 }
 
 .header__main__search {
-  flex: 0.6;
+  flex: 0.8;
   display: flex;
 }
 
@@ -40,7 +41,7 @@
   background-color: #161b22;
   display: flex;
   transition: all ease-in-out 0.35s;
-  width: 50%;
+  width: 60%;
 }
 
 .header__main__search__in__icon {
@@ -55,6 +56,12 @@
   width: 100%;
   outline: none;
   color: #dbdbdb;
+}
+
+@media screen and (max-width: 768px) {
+  .header__main__search {
+    display: none;
+  }
 }
 
 .header__user {
@@ -128,6 +135,12 @@
   transform: scale(0.95);
 }
 
+@media screen and (max-width: 768px) {
+  .login {
+    width: 15%;
+  }
+}
+
 .selectcurrency {
   width: 20%;
   display: flex;
@@ -161,6 +174,12 @@
   transition: all ease-in-out 0.3s;
 }
 
+@media screen and (max-width: 768px) {
+  .selectcurrency__currency {
+    width: 100%;
+  }
+}
+
 .selectcurrency__currency:hover {
   transform: scale(0.95);
 }
@@ -179,8 +198,8 @@
   padding: 1em;
   background-color: #161b22;
   margin-top: 0.5em;
-  width: 50%;
-  height: 50%;
+  width: 60%;
+  height: 60%;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -215,6 +234,9 @@
 }
 
 .selectcurrency__currency__dropdown li {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   border-radius: 5px;
   text-transform: uppercase;
   padding: 0.5em;
@@ -231,6 +253,28 @@
 
 .selectcurrency__currency__dropdown li:hover {
   transform: scale(1.05);
+}
+
+@media screen and (max-width: 750px) {
+  .selectcurrency__currency__dropdown {
+    width: 80%;
+    height: 70%;
+  }
+  .selectcurrency__currency__dropdown li {
+    flex-direction: column;
+  }
+  .selectcurrency__currency__dropdown__list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 530px) {
+  .selectcurrency__currency__dropdown__list {
+    grid-template-columns: 1fr;
+  }
+  .selectcurrency__currency__dropdown li {
+    flex-direction: row;
+  }
 }
 
 .selectcurrency select {

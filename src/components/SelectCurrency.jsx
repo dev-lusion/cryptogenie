@@ -10,9 +10,8 @@ const SelectCurrency = () => {
     if (!currency) {
       setCurrency(localStorage.getItem("currency"));
     }
-
     const res = await axios.get(
-      "https://pro-api.coinmarketcap.com/v1/fiat/map",
+      "https://cors-anywhere.herokuapp.com/https://pro-api.coinmarketcap.com/v1/fiat/map",
       {
         headers: {
           "X-CMC_PRO_API_KEY": "5ea4dfc6-17d5-482c-8345-57b80ed444d5",
@@ -34,11 +33,10 @@ const SelectCurrency = () => {
   };
   useEffect(() => {
     fetchCurrencies();
-  }, []);
+  }, [currency]);
 
   const handleClick = (symbol) => {
     setShowDropDown(!showDropdown);
-
     localStorage.setItem("currency", symbol);
     setCurrency(symbol);
   };

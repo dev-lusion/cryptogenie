@@ -19,7 +19,8 @@
     justify-content: space-between;
 
     &__logo {
-      flex: 0.05;
+      margin-right: 3em;
+      flex: 0.1;
       color: $dark-text;
       display: flex;
       img {
@@ -28,7 +29,7 @@
       }
     }
     &__search {
-      flex: 0.6;
+      flex: 0.8;
       display: flex;
 
       &__in {
@@ -40,7 +41,7 @@
         background-color: $dark-card;
         display: flex;
         transition: all ease-in-out 0.35s;
-        width: 50%;
+        width: 60%;
         &__icon {
           display: flex;
           align-items: center;
@@ -55,7 +56,19 @@
 
         color: $dark-text;
       }
+
+      @media screen and (max-width: 768px) {
+        & {
+          display: none;
+        }
+      }
     }
+
+    // @media screen and (max-width: 768px) {
+    //   & {
+    //     flex: 0.8;
+    //   }
+    // }
   }
   &__user {
     width: 15vw;
