@@ -101,6 +101,9 @@
       border-radius: 40%;
     }
   }
+  @media screen and (max-width: 550px) {
+    padding: 0.5em;
+  }
 }
 .expand {
   width: 100%;
