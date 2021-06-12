@@ -1,59 +1,71 @@
 import React, { useState, useEffect, useRef } from "react";
-import axios from "axios";
 
-const api_key = "5ea4dfc6-17d5-482c-8345-57b80ed444d5";
+import data from ".././data.json";
 const SelectCurrency = () => {
-  const [currencies, setCurrencies] = useState([]);
-  const [currency, setCurrency] = useState("");
+  const searchRef = useRef(null);
+
+  const currencies = Object.keys(data).map((name) => ({
+    name,
+    symbol: data[name],
+  }));
+  const [currency, setCurrency] = useState("INR");
+  const [searchCurrency, setSearchCurrency] = useState("");
   const [showDropdown, setShowDropDown] = useState(false);
-  const fetchCurrencies = async () => {
-    if (!currency) {
+  const [filteredCurrencies, setFilteredCurrencies] = useState([]);
+  const [load, setLoad] = useState(false);
+  useEffect(() => {
+    if (searchRef.current) {
+      searchRef.current.focus();
+    }
+  }, [searchRef.current]);
+  useEffect(() => {
+    if (localStorage.getItem("currency")) {
       setCurrency(localStorage.getItem("currency"));
     }
-    const res = await axios.get(
-      "https://cors-anywhere.herokuapp.com/https://pro-api.coinmarketcap.com/v1/fiat/map",
-      {
-        headers: {
-          "X-CMC_PRO_API_KEY": "5ea4dfc6-17d5-482c-8345-57b80ed444d5",
-          "Access-Control-Allow-Origin": "*",
-          crossorigin: "true",
-        },
-      }
-    );
-    const result = res.data;
-
-    setCurrencies(result.data);
-    // console.log(res.data.data);
-
-    // const res = await fetch(
-    //   "https://api.coingecko.com/api/v3/simple/supported_vs_currencies"
-    // );
-    // const data = await res.json();
-    // setCurrencies(data);
-  };
-  useEffect(() => {
-    fetchCurrencies();
-  }, [currency]);
+    const filtered = currencies.filter((curr) => {
+      return curr.name.includes(searchCurrency.toLowerCase());
+    });
+    if (filtered) {
+      setFilteredCurrencies(filtered);
+    } else {
+      setFilteredCurrencies(currencies);
+    }
+  }, [searchCurrency]);
 
   const handleClick = (symbol) => {
     setShowDropDown(!showDropdown);
+    setFilteredCurrencies(currencies);
     localStorage.setItem("currency", symbol);
     setCurrency(symbol);
   };
+
+  const filterCurrencies = (event) => {
+    setSearchCurrency(event.target.value);
+  };
+
   return (
     <div className="selectcurrency">
       <div
         className="selectcurrency__currency"
-        onClick={() => setShowDropDown(!showDropdown)}
+        onClick={() => {
+          setFilteredCurrencies(currencies);
+          setShowDropDown(!showDropdown);
+        }}
       >
         {currency}
       </div>
       {showDropdown && (
-        <div className="selectcurrency__currency__dropdown">
+        <div className={`selectcurrency__currency__dropdown`}>
           <div className="selectcurrency__currency__top">
-            <div>
-              <h2>Select currency</h2>
-            </div>
+            <input
+              ref={searchRef}
+              type="text"
+              placeholder="Search currency"
+              onChange={filterCurrencies}
+            />
+            <button onClick={() => searchRef.current.focus()}> focus</button>
+            {/* focus on click */}
+
             <div
               className="selectcurrency__currency__dropdown__close"
               onClick={() => setShowDropDown(!showDropdown)}
@@ -61,15 +73,13 @@ const SelectCurrency = () => {
               <box-icon name="x" color="#f52f57" size="30px"></box-icon>
             </div>
           </div>
-          {/* TODO add currency flags */}
           <div className="selectcurrency__currency__dropdown__list">
-            {currencies?.map((curr, idx) => {
+            {filteredCurrencies?.map((curr, idx) => {
               return (
-                <li onClick={() => handleClick(curr.symbol)} key={idx}>
+                <li onClick={() => handleClick(curr.name)} key={idx}>
                   {curr.name}
-                  <p>
-                    {curr.sign} <span>{curr.symbol}</span>
-                  </p>
+
+                  <p>{curr.symbol}</p>
                 </li>
               );
             })}

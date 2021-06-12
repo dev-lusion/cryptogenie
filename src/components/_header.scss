@@ -22,10 +22,10 @@
       margin-right: 3em;
       flex: 0.1;
       color: $dark-text;
-      display: flex;
+      // display: flex;
       img {
-        width: 25px;
-        height: 15px;
+        width: 150px;
+        // height: 100%;
       }
     }
     &__search {

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import logo from "./../Vector3.png";
+import cg from "./../logo.png";
 import "boxicons";
 import Login from "./Login";
 import SelectCurrency from "./SelectCurrency";
@@ -9,10 +10,10 @@ const Header = ({ login }) => {
     <div className="header">
       <div className="header__main">
         <div className="header__main__logo">
-          <h1>
+          {/* <h1>
             <span>crypto</span>.<span>genie</span>
-          </h1>
-          <img src={logo} alt="logo" />
+          </h1> */}
+          <img src={cg} alt="logo" />
         </div>
         <div className="header__main__search">
           <div className={`header__main__search__in ${expand ? "expand" : ""}`}>
