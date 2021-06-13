@@ -1,11 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import logo from "./../Vector3.png";
-import cg from "./../logo.png";
+import cg from "./../logo2.png";
 import "boxicons";
 import Login from "./Login";
 import SelectCurrency from "./SelectCurrency";
+import { useSelector } from "react-redux";
+import { selectCurrency } from "../store/currencySlice";
+
 const Header = ({ login }) => {
+  const curr = useSelector(selectCurrency);
   const [expand, setExpand] = useState(false);
+  const [showDropdown, setShowDropDown] = useState(false);
+  const [currency, setCurrency] = useState("INR");
+
+  useEffect(() => {
+    if (localStorage.getItem("currency")) {
+      setCurrency(localStorage.getItem("currency"));
+    }
+  }, [localStorage.getItem("currency")]);
+  console.log(currency);
   return (
     <div className="header">
       <div className="header__main">
@@ -27,7 +40,22 @@ const Header = ({ login }) => {
             />
           </div>
         </div>
-        <SelectCurrency />
+        <div className="selectcurrency">
+          <div
+            className="selectcurrency__currency"
+            onClick={() => {
+              setShowDropDown(!showDropdown);
+            }}
+          >
+            {curr}
+          </div>
+        </div>
+        {showDropdown && (
+          <SelectCurrency
+            showDropdown={showDropdown}
+            setShowDropDown={setShowDropDown}
+          ></SelectCurrency>
+        )}
       </div>
       {login ? (
         <Login></Login>

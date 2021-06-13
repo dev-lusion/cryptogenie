@@ -1,0 +1,50 @@
+.newscard {
+  position: relative;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  width: 350px;
+  height: 105px;
+  background-color: $dark-card;
+  &__img {
+    border-radius: 5px 0 0 5px;
+    flex: 0.4;
+    height: 100%;
+
+    img {
+      border-radius: 5px 0 0 5px;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__desc {
+    padding: 0.5em;
+    flex: 0.6;
+    margin-left: 0.5em;
+
+    p {
+      font-weight: 400;
+      font-size: 0.85rem;
+    }
+    a {
+      position: absolute;
+      color: $logo-red;
+      text-decoration: none;
+      bottom: 5px;
+      font-weight: 500;
+
+      &:visited,
+      &:active {
+        color: $logo-red;
+      }
+
+      &:hover {
+        transform: scale(1.05);
+        color: $logo-red;
+        cursor: pointer;
+      }
+    }
+  }
+}

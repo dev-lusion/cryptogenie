@@ -1,8 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import "./../components/_header.scss";
 @import "./_variables.scss";
 @import "./../components/login";
 @import "./../components/selectcurrency";
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import "./../components/newscard";
+@import "./../components/landing";
+@import "./../components/loading";
 * {
   border: 0;
   margin: 0;

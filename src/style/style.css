@@ -147,7 +147,6 @@
 }
 
 .selectcurrency {
-  z-index: 2;
   width: 20%;
   display: flex;
   justify-content: flex-end;
@@ -214,6 +213,7 @@
 }
 
 .selectcurrency__currency__dropdown {
+  z-index: 1000;
   display: flex;
   flex-direction: column;
   border-radius: 5px;
@@ -307,22 +307,111 @@
   }
 }
 
-.selectcurrency select {
-  -webkit-appearance: none;
-  width: 50%;
-  border-radius: 5px;
-  background: white;
+.selectcurrency__wrapper {
+  z-index: 1000;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background-color: #0d1117e5;
+}
+
+.newscard {
+  position: relative;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  width: 350px;
+  height: 105px;
+  background-color: #161b22;
+}
+
+.newscard__img {
+  border-radius: 5px 0 0 5px;
+  flex: 0.4;
+  height: 100%;
+}
+
+.newscard__img img {
+  border-radius: 5px 0 0 5px;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.newscard__desc {
+  padding: 0.5em;
+  flex: 0.6;
+  margin-left: 0.5em;
+}
+
+.newscard__desc p {
+  font-weight: 400;
+  font-size: 0.85rem;
+}
+
+.newscard__desc a {
+  position: absolute;
+  color: #f52f57;
+  text-decoration: none;
+  bottom: 5px;
+  font-weight: 500;
+}
+
+.newscard__desc a:visited, .newscard__desc a:active {
+  color: #f52f57;
+}
+
+.newscard__desc a:hover {
+  transform: scale(1.05);
+  color: #f52f57;
   cursor: pointer;
-  transition: all 150ms ease;
 }
 
-.selectcurrency select option {
-  padding: 0.25em;
-  color: red;
+.landing__news {
+  overflow-x: scroll;
+  padding: 0.5em 1.5em;
+  display: grid;
+  gap: 2em;
+  grid-auto-flow: column;
 }
 
-.selectcurrency select::-webkit-scrollbar {
+.landing__news::-webkit-scrollbar {
   display: none;
+}
+
+.scroll {
+  color: #6c6c7c;
+  font-size: 0.65rem;
+  font-weight: 700;
+  right: 10px;
+}
+
+.loading {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+}
+
+.loading img {
+  width: 250px;
+}
+
+.loading h4 {
+  color: #6c6c7c;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-right: 1em;
+}
+
+.loading__loader {
+  margin-top: 1em;
+  display: flex;
+  align-items: center;
 }
 
 * {

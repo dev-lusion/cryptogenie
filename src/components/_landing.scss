@@ -1,0 +1,20 @@
+.landing {
+  &__news {
+    overflow-x: scroll;
+    padding: 0.5em 1.5em;
+    display: grid;
+    gap: 2em;
+    grid-auto-flow: column;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+.scroll {
+  color: $dark-text-grey;
+  font-size: 0.65rem;
+  font-weight: 700;
+  right: 10px;
+}

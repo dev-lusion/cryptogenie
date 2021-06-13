@@ -1,0 +1,24 @@
+.loading {
+  //   width: 100vw;
+  //   height: 100vh;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  img {
+    width: 250px;
+  }
+  h4 {
+    color: $dark-text-grey;
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-right: 1em;
+  }
+
+  &__loader {
+    margin-top: 1em;
+    display: flex;
+    align-items: center;
+  }
+}
