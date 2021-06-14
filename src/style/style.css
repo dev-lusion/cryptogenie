@@ -674,4 +674,8 @@ body {
   background-color: #0d1117;
   color: #b3d9ff;
 }
+
+.CryptoPanicWidget::-webkit-scrollbar {
+  display: none;
+}
 /*# sourceMappingURL=style.css.map */

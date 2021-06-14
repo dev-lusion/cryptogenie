@@ -53,9 +53,8 @@ const Landing = () => {
             <div className="landing">
               <Header login={false}></Header>
               <Sidebar></Sidebar>
-
-              <NewsList></NewsList>
               <Table></Table>
+              <NewsList></NewsList>
               {/* <TrendingCurrency></TrendingCurrency> */}
 
               {/* chart */}

@@ -20,30 +20,29 @@ const NewsList = ({}) => {
   }, []);
 
   return (
-    <>
-      <div className="newslist__heading" onClick={() => setShowNews(!showNews)}>
-        Trending news
-        <box-icon name="trending-up" size="20px" color="#6c6c7c"></box-icon>
-      </div>
-      {showNews && (
-        <div className="newslist">
-          {newsList.map((news) => {
-            return (
-              <div className="newslist__newscard" key={news?.id}>
-                <div className="newslist__newscard__desc">
-                  <p>{news?.source.title}</p>
-                  <h4>{news?.title}</h4>
-                  <a href={news?.url} target="_blank">
-                    {" "}
-                    Read More
-                  </a>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      )}
-    </>
+    // <a
+    //   href="https://cryptopanic.com/"
+    //   target="_blank"
+    //   data-news_feed="trending"
+    //   data-posts_limit="10"
+    //   data-bg_color="#0D1117"
+    //   data-text_color="#6C6C7C"
+    //   data-link_color="#2A95FF"
+    //   data-header_bg_color="#0D1117"
+    //   data-header_text_color="#FFFFFF"
+    //   className="CryptoPanicWidget"
+    // >
+    //   Trending News
+    // </a>
+
+    <iframe
+      width="100%"
+      scrolling="yes"
+      allowtransparency="true"
+      frameborder="0"
+      src="https://cryptopanic.com/widgets/news/?bg_color=0D1117&amp;font_family=mono&amp;header_bg_color=0D1117&amp;header_text_color=FFFFFF&amp;link_color=2A95FF&amp;news_feed=trending&amp;posts_limit=5&amp;text_color=6C6C7C&amp;title=Trending%20News"
+      height="350px"
+    ></iframe>
   );
 };
 

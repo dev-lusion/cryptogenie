@@ -21,3 +21,6 @@ body {
   background-color: $dark-bg;
   color: $dark-text;
 }
+.CryptoPanicWidget::-webkit-scrollbar {
+  display: none;
+}
