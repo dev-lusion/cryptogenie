@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "../axios";
 import requests from "../requests";
+import { selectCurrency } from "../store/currencySlice";
+import { useSelector } from "react-redux";
 import "boxicons";
 const Table = () => {
   const pages = [1, 2, 3, 4, 5, 6, 7, 8];
-  const currency = localStorage.getItem("currency");
+  const currency = useSelector(selectCurrency);
   const [currentPage, setCurrentPage] = useState(1);
   const [data, setData] = useState([]);
   const fetchData = async () => {
