@@ -1,0 +1,33 @@
+.sidebar {
+  z-index: 4000;
+  height: 100%;
+  // width: 50%;
+  background-color: blue;
+  position: absolute;
+  right: -100%;
+  top: 0;
+  right: 0px;
+  transition: $anim;
+  display: none;
+
+  &__main__btn {
+    position: absolute;
+    right: 10px;
+    display: none;
+    @media screen and (max-width: 550px) {
+      & {
+        display: block;
+      }
+    }
+  }
+
+  @media screen and (max-width: 550px) {
+    display: block;
+  }
+}
+.show {
+  right: 0px;
+}
+.hidden {
+  display: none;
+}

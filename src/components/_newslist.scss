@@ -1,0 +1,83 @@
+.newslist {
+  overflow-x: scroll;
+  padding: 0.5em 1em;
+  display: grid;
+  gap: 2em;
+  grid-auto-flow: column;
+  border-bottom: 1px solid $dark-card;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  &__newscard {
+    transition: $anim;
+    position: relative;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 350px;
+    min-height: 120px;
+    max-height: 150px;
+    background-color: $dark-card;
+    &__source {
+      padding: 0.5em;
+    }
+    &__desc {
+      color: $dark-text-white;
+      padding: 0.5em;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+
+      h4 {
+        font-size: 0.95rem;
+      }
+      p {
+        font-weight: 600;
+        font-size: 0.85rem;
+        margin-bottom: 5px;
+        color: $logo-blue;
+      }
+      a {
+        position: absolute;
+        color: $link-color;
+        text-decoration: none;
+        bottom: 5px;
+        font-size: 0.85rem;
+        font-weight: 400;
+        align-self: flex-end;
+
+        &:visited,
+        &:active {
+          color: $link-color;
+        }
+
+        &:hover {
+          transform: scale(1.05);
+          // color: $logo-blue;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 550px) {
+    & {
+      padding: 0.5em;
+      &__heading {
+        padding: 0 0.3em !important;
+        padding-bottom: 0.5em !important;
+      }
+    }
+  }
+  &__heading {
+    margin: 0.5em 0;
+    padding: 0 0.65em;
+    padding-bottom: 0.5em;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: $dark-text-grey;
+    border-bottom: 1px solid $dark-card;
+  }
+}

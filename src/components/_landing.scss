@@ -1,4 +1,7 @@
 .landing {
+  position: relative;
+  color: $dark-text-white;
+  height: 100vh;
   &__news {
     overflow-x: scroll;
     padding: 0.5em 1.5em;

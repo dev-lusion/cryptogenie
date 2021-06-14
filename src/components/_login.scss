@@ -15,16 +15,16 @@
     height: 100%;
     font-family: $font-family;
     font-size: 0.85rem;
-    color: $logo-red;
+    color: $logo-blue;
     background-color: transparent;
-    border: 2px solid $logo-red;
+    border: 2px solid $logo-blue;
     padding: 0 0.15em;
 
     &:hover {
       cursor: pointer;
       border: 2px solid transparent;
       color: $dark-bg;
-      background-color: $logo-red;
+      background-color: $logo-blue;
       transform: scale(0.95);
     }
   }

@@ -1,46 +1,67 @@
 import React, { useEffect, useState } from "react";
 import Header from "./Header";
-import NewsCard from "./NewsCard";
+import NewsList from "./NewsList";
 import Loading from "./Loading";
+import axios from "./../axios";
+import requests from "./../requests";
+import TrendingCurrency from "./TrendingCurrency";
 import FadeIn from "react-fade-in/lib/FadeIn";
+import GlobalData from "./GlobalData";
+import Sidebar from "./Sidebar";
+import Table from "./Table";
+import { selectLoadingStatus } from "../store/loadingSlice";
+import { selectCurrency } from "../store/currencySlice";
+import { apiLoaded } from "../store/loadingSlice";
+import { useSelector, useDispatch } from "react-redux";
 const Landing = () => {
-  const [news, setNews] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const apiIsLoading = useSelector(selectLoadingStatus);
+  const dispatch = useDispatch();
+  const defaultCurrency = useSelector(selectCurrency);
+  const [data, setData] = useState();
   const fetchData = async () => {
     try {
-      const res = await fetch(
-        "https://newsapi.org/v2/everything?q=cryptocurrency&apiKey=8768d2eac5b043059c5e1b375b71d2c5"
-      );
-      const data = await res.json();
+      axios.get(requests.globalData).then((res) => {
+        dispatch(apiLoaded(false));
+        const marketCap = Object.entries(
+          res.data.data?.total_market_cap
+        ).filter((curr) => curr[0] === defaultCurrency)[0][1];
+        const dominance = Object.fromEntries(
+          Object.entries(res.data.data?.market_cap_percentage).slice(0, 2)
+        );
 
-      setNews(data.articles);
-      setIsLoading(false);
-      console.log(data);
-    } catch (err) {
-      console.log(err);
-    }
+        setData({
+          coins: res.data.data?.active_cryptocurrencies,
+          totalMarketCap: marketCap,
+          dominance: dominance,
+          defaultCurrency,
+        });
+      });
+    } catch (err) {}
   };
+
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [defaultCurrency]);
   return (
     <>
-      {isLoading ? (
+      {apiIsLoading ? (
         <Loading></Loading>
       ) : (
-        <FadeIn>
-          <div className="landing">
-            <Header login></Header>
-            <div className="landing__news">
-              {news?.map((item) => {
-                return <NewsCard {...item} key={item.publishedAt}></NewsCard>;
-              })}
-              {/* <div className="scroll"> Scroll Right for more news </div> */}
-            </div>
+        <>
+          <GlobalData {...data}></GlobalData>
+          <FadeIn>
+            <div className="landing">
+              <Header login={false}></Header>
+              <Sidebar></Sidebar>
 
-            {/* chart */}
-          </div>
-        </FadeIn>
+              <NewsList></NewsList>
+              <Table></Table>
+              {/* <TrendingCurrency></TrendingCurrency> */}
+
+              {/* chart */}
+            </div>
+          </FadeIn>
+        </>
       )}
     </>
   );
